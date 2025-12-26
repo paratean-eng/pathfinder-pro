@@ -7,33 +7,37 @@ const JourneySteps = () => {
       title: "Assess",
       description: "Take our psychometric & skills assessment.",
       tag: "FREE",
-      color: "bg-accent-green text-accent-green-text",
+      bgColor: "bg-accent-green",
+      textColor: "text-accent-green-text",
     },
     {
       icon: MapPin,
       title: "Plan",
       description: "Receive a personalized roadmap designed for your goals.",
       tag: "FREE",
-      color: "bg-accent-green text-accent-green-text",
+      bgColor: "bg-accent-green",
+      textColor: "text-accent-green-text",
     },
     {
       icon: BookOpen,
       title: "Learn",
       description: "Access our courses & learn at your own pace with supervised mentorship.",
       tag: null,
-      color: "bg-accent-purple text-accent-purple-text",
+      bgColor: "bg-accent-purple",
+      textColor: "text-accent-purple-text",
     },
     {
       icon: TrendingUp,
       title: "Grow",
       description: "Track your progress, connect with others & grow your professional network.",
       tag: null,
-      color: "bg-accent-purple text-accent-purple-text",
+      bgColor: "bg-accent-purple",
+      textColor: "text-accent-purple-text",
     },
   ];
 
   return (
-    <section className="bg-card py-24">
+    <section className="bg-muted py-24">
       <div className="container">
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-2xl text-center">
@@ -49,24 +53,26 @@ const JourneySteps = () => {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col items-stretch gap-5 md:flex-row md:items-start md:justify-between">
           {steps.map((step, index) => (
-            <div key={step.title} className="relative">
-              <div className="relative rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div key={step.title} className="flex flex-1 items-center gap-4 md:flex-col md:gap-0">
+              {/* Step Card */}
+              <div className="relative flex-1 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:w-full">
                 {step.tag && (
-                  <span className="absolute right-6 top-6 rounded bg-foreground px-2 py-0.5 text-xs font-bold text-background">
+                  <span className="absolute right-4 top-4 rounded bg-foreground px-2 py-0.5 text-[10px] font-bold uppercase text-background">
                     {step.tag}
                   </span>
                 )}
-                <div className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${step.color}`}>
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${step.bgColor} ${step.textColor}`}>
                   <step.icon className="h-6 w-6" />
                 </div>
                 <h4 className="mb-2 text-lg font-bold">{step.title}</h4>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
-              {/* Connector */}
+
+              {/* Connector (hidden on mobile, shown between cards on desktop) */}
               {index < steps.length - 1 && (
-                <div className="absolute right-0 top-1/2 hidden h-0.5 w-6 -translate-y-1/2 translate-x-full bg-border lg:block" />
+                <div className="hidden h-0.5 w-10 flex-shrink-0 bg-border md:mt-12 md:block" />
               )}
             </div>
           ))}

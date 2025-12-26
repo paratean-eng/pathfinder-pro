@@ -11,7 +11,7 @@ const PricingSection = () => {
       period: "/one-time",
       description: "Best for students starting their MBA journey",
       features: [
-        "CAT – QA Section prep powered by Takshzila",
+        "CAT – QA Section prep powered by Takshzila – Centre of Excellence",
         "CAT – VARC & DILR Sections prep through active skill-building",
         "Access to high-quality sectional tests and mock tests (50+ in total)",
         "Access to a like-minded community",
@@ -55,40 +55,42 @@ const PricingSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="mx-auto grid max-w-4xl gap-8 lg:grid-cols-2">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 lg:flex-row">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:shadow-lg"
+              className="flex-1 overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg"
             >
-              <div className="flex flex-col lg:flex-row lg:gap-8">
-                {/* Left Side */}
+              <div className="flex flex-col p-8 lg:flex-row lg:gap-8">
+                {/* Left Side - Plan Info */}
                 <div className="mb-6 lg:mb-0 lg:w-1/2">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-purple text-accent-purple-text">
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-purple text-accent-purple-text">
                     <plan.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mb-1 text-2xl font-bold">{plan.name}</h3>
-                  <p className="mb-4 text-sm text-muted-foreground">{plan.audience}</p>
+                  <h3 className="mb-2 text-2xl font-bold">{plan.name}</h3>
+                  <p className="mb-5 text-sm text-muted-foreground">{plan.audience}</p>
+                  
                   <div className="mb-2">
-                    <span className="text-3xl font-extrabold">{plan.price}</span>
+                    <span className="text-3xl font-extrabold text-foreground">{plan.price}</span>
                     <span className="text-muted-foreground">{plan.period}</span>
                   </div>
                   <p className="mb-6 text-sm text-muted-foreground">{plan.description}</p>
+                  
                   <Button className="w-full">Get Started Today</Button>
                 </div>
 
                 {/* Right Side - Features */}
-                <div className="lg:w-1/2">
+                <div className="border-t border-border pt-6 lg:w-1/2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                   <ul className="space-y-3">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <li key={feature} className="flex items-start gap-3 text-sm text-muted-foreground">
                         <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                   {plan.installments && (
-                    <div className="mt-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent">
+                    <div className="mt-6 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-xs font-medium italic text-accent">
                       Easy installments option also available
                     </div>
                   )}

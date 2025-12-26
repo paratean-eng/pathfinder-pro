@@ -7,13 +7,15 @@ const TestimonialsSection = () => {
     {
       name: "Akanksha Nene",
       image: testimonial1,
+      school: "IIMB",
       callsConverted: "IIM Bangalore and many other top IIMs",
       callsReceived: "All top B-Schools",
-      quote: '"Ashwani helped me with perspective more than anything else. In a world that\'s so focused on numbers and ranks, people forget what really matters. Conversations with Ashwani really helped me get things that were important to me in focus."',
+      quote: '"Ashwani helped me with perspective more than anything else. In a world that\'s so focused on numbers and ranks, people forget what really matters. Conversations with Ashwani really helped me get things that were important to me in focus. Sometimes it was what everyone wanted, and sometimes it was the "hatke" choice. When choosing something other than what everyone around you wants, self doubt creeps in. But I\'m very grateful for Ashwani\'s inputs and experience that helped me stay true to what I believed was best for me."',
     },
     {
       name: "Roopshree Dadel",
       image: testimonial2,
+      school: "IIMI",
       callsConverted: "IIM Indore, IIM Vishakapatnam",
       callsReceived: "IIM Indore, CAP IIMs and baby IIMs",
       quote: '"I thought CAT was the finish line, but the entire experience showed me it was just the start. The confidence, communication, and self-belief I built helped me become equipped to do well at my MBA at IIM Indore."',
@@ -21,6 +23,7 @@ const TestimonialsSection = () => {
     {
       name: "Dhruv Parmar",
       image: testimonial3,
+      school: "Nirma",
       callsConverted: "Nirma University, SIBM",
       callsReceived: "NIRMA University, BIMTECH, SSBF Pune, and SOIL Gurgaon",
       quote: '"Ashwani Bhaiyya was not only an MBA process but also a genuine life about his students, offering insights into MBA colleges. His unwavering support advice helped me navigate the stressful and gain perspective on my future."',
@@ -50,23 +53,33 @@ const TestimonialsSection = () => {
               key={testimonial.name}
               className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="mb-4 flex items-center gap-4">
-                <div className="h-14 w-14 overflow-hidden rounded-full">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="h-full w-full object-cover"
-                  />
+              {/* Header */}
+              <div className="mb-4 flex items-start justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-secondary">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-bold">{testimonial.name}</h4>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold">{testimonial.name}</h4>
+                <div className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground">
+                  {testimonial.school}
                 </div>
               </div>
+
+              {/* Stats */}
               <div className="mb-4 space-y-1 text-sm text-muted-foreground">
                 <p><span className="font-medium text-foreground">Calls Converted:</span> {testimonial.callsConverted}</p>
                 <p><span className="font-medium text-foreground">Calls Received:</span> {testimonial.callsReceived}</p>
               </div>
-              <p className="text-sm italic text-muted-foreground">{testimonial.quote}</p>
+
+              {/* Quote */}
+              <p className="text-sm leading-relaxed text-muted-foreground">{testimonial.quote}</p>
             </div>
           ))}
         </div>
